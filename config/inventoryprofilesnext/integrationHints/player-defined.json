@@ -1,0 +1,17 @@
+{
+    "net.minecraft.class_490": {
+        "buttonHints": {
+            "SORT": {
+                "horizontalOffset": -1,
+                "bottom": 1
+            }
+        }
+    },
+    "de.guntram.mcmod.easiercrafting.ExtendedGuiCrafting": {
+        "buttonHints": {
+            "SETTINGS": {
+                "top": 1
+            }
+        }
+    }
+}

@@ -1,0 +1,919 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+  /*嘉然*/
+  --color-main: #E799B0;
+  --color-main-semitransparent: #e799b080;
+  --color-1: rgba(252,242,245,0.6);
+  --color-1: #fcf2f585;
+  --color-1-notrans: #fcf2f5;
+  --color-2: #f9e6eb; 
+  --color-3: #f6d9e1;
+  --color-4: #f3ccd8;
+  --color-5: #f0bfce;
+  --color-6: #edb3c4;
+  --color-7: #eaa6ba;
+  --color-8: #de7292;
+  --color-8-trans: #de729285;
+  --color-9: #e99eb4;
+  --color-10: #fbd3ea85;
+  --color-11: #B5D6FC;
+
+  --background-img: url("file:////home/iko_xcw/.config/Typora/themes/jiaran/diana.png");
+
+  --control-text-color: #777;
+  --select-text-bg-color: var(--color-11);  /* specially set for source mode */
+  --search-select-bg-color: var(--color-8);
+
+  --side-bar-bg-color: var(--color-main-semitransparent);
+  --window-border: 2px solid var(--color-main);
+
+  --title-color: var(--color-main);
+  --text-color: #34495e;
+  --font-sans-serif: "思源宋体", "Source Han Sans CN", "Ubuntu", "Source Han Sans SC", "Source Sans Pro", sans-serif !important;
+  --font-monospace: "Fira Code", "思源黑体", "Noto Sans CJK SC", monospace !important;
+
+  --base-font: -apple-system, "Fira Code", "思源黑体", "Noto Sans", "Helvetica Neue", Helvetica,
+    "Nimbus Sans L", Arial, "Liberation Sans", "Noto Sans CJK SC", "PingFang SC",
+    "Hiragino Sans GB", "Source Han Sans SC", "Source Han Sans CN",
+    "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti",
+    SimHei, "WenQuanYi Zen Hei Sharp", "Ubuntu", "Source Sans Pro", monospace;
+
+    --title-font: "Noto Serif CJK SC", "Songti SC", "Source Han Serif SC",
+    "Source Han Serif CN", STSong, "AR PL New Sung", "AR PL SungtiL GB", NSimSun,
+    SimSun, "TW\-Sung", "WenQuanYi Bitmap Song", "AR PL UMing CN",
+    "AR PL UMing HK", "AR PL UMing TW", "AR PL UMing TW MBE", PMingLiU, MingLiU,
+    "Ubuntu", "Source Sans Pro", serif;
+  --em-font: "Noto Serif CJK SC" ， "Songti SC", "Source Han Serif SC",
+    "Source Han Serif CN", STSong, "AR PL New Sung", "AR PL SungtiL GB", NSimSun,
+    SimSun, "TW\-Sung", "WenQuanYi Bitmap Song", "AR PL UMing CN",
+    "AR PL UMing HK", "AR PL UMing TW", "AR PL UMing TW MBE", PMingLiU, MingLiU,
+    "Ubuntu", "Source Sans Pro", serif;
+  --quota-font: "EB Garamond", Baskerville, Georgia, "Liberation Serif",
+    "TW-Kai", "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK",
+    "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312,
+    DFKai-SB, "TW\-Kai", serif;
+  --monospace: "Fira Code", "思源黑体", "Noto Sans", "Noto Sans CJK SC", "Cascadia code", "Sarasa Term SC", Monaco, "Deja Vu Sans Mono",
+    Consolas, "Lucida Console", "Andale Mono", "Fira Code", "Roboto Mono",
+    monospace, Courier;
+
+    --shadow: var(--color-5) 0px 5px 10px;
+}
+
+/* 窗口框颜色 */
+header {
+  background-color: initial;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: initial;
+}
+
+body {
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6rem;
+  letter-spacing: 0;
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--color-3);
+}
+
+content {
+  background: var(--color-3);
+}
+
+/* set default mode's selected color */
+.in-text-selection, ::selection {
+  background-color: var(--color-3);
+}
+
+#write {
+  font-family: var(--base-font);
+  background-color: #fff !important; 
+  width: 85%;
+  height: auto;
+
+  background: var(--background-img) no-repeat;
+  background-size: 10%;
+  background-position: 90% bottom;
+  background-attachment: fixed;
+
+  margin-top: 30px;
+  margin-bottom: 15px;
+  padding-left: 7%;
+  padding-right: 14%;
+  /*margin: 0 auto;
+  padding: 4rem;*/
+  padding-bottom: 100px;
+
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px var(--color-main);
+  z-index: 0;
+}
+
+#write p {
+  line-height: 1.6rem;
+  word-spacing: 0.05rem;
+}
+
+/* 调整#write区下的元素属性 */
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre {
+  width: 100%;  /* 不调整为继承则导致宽度异常 */
+}
+
+body > *:first-child {
+  margin-top: 0 !important;
+}
+
+body > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+a {
+  color: var(--color-5);
+  text-decoration: none;
+}
+#write a:hover {
+  border-bottom: 1px solid var(--color-5);
+  color: var(--color-5);
+  text-decoration: none;
+}
+.md-content {
+  color: var(--color-7);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  /* font-weight: bold; */
+  font-weight: 400;
+  line-height: 1.4;
+  cursor: text;
+  color: var(--title-color);
+  font-family: var(--title-font);
+}
+
+h1 tt,
+h1 code {
+  font-size: inherit !important;
+}
+h2 tt,
+h2 code {
+  font-size: inherit !important;
+}
+h3 tt,
+h3 code {
+  font-size: inherit !important;
+}
+h4 tt,
+h4 code {
+  font-size: inherit !important;
+}
+h5 tt,
+h5 code {
+  font-size: inherit !important;
+}
+h6 tt,
+h6 code {
+  font-size: inherit !important;
+}
+
+h1 {
+  padding-bottom: 0.4rem;
+  font-size: 2.2rem;
+  line-height: 1.3;
+}
+h1 {
+  text-align: center;
+  padding-bottom: 0.3em;
+  font-size: 2.2em;
+  line-height: 1.2;
+  margin: 1.6em auto 1em;
+}
+h1:after {
+  content: "";
+  display: block;
+  margin: 0.2em auto 0;
+  width: 100px;
+  height: 2px;
+  border-bottom: 2px solid var(--title-color);
+}
+
+h2 {
+  /*margin: 1.4em auto 0.8em;*/
+  padding-left: 10px;
+  line-height: 1.4;
+  font-size: 1.8em;
+  border-left: 9px solid var(--title-color);
+  border-bottom: 1px solid var(--title-color);
+}
+h3 {
+  font-size: 1.5rem;
+  /*margin: 1.2em auto 0.5em;*/
+}
+h4 {
+  font-size: 1.3rem;
+}
+h5 {
+  font-size: 1.2rem;
+}
+h6 {
+  font-size: 1.1rem;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+  margin: 0.8em 0;
+}
+
+/* horizontal rule */
+hr {
+  margin: 16px 0;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+/* 列表 */
+li > ol,
+li > ul {
+  margin: 0 0;
+}
+
+li p.first {
+  display: inline-block;
+}
+
+ul,
+ol {
+  padding-left: 2rem;
+}
+
+ul:first-child,
+ol:first-child {
+  margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+  margin-bottom: 0;
+}
+
+#write ol li,
+ul li {
+  padding-left: 0.1rem;
+}
+
+
+
+
+#filesearch-case-option-btn,
+#filesearch-word-option-btn {
+  background: var(--color-main);
+}
+
+#typora-sidebar {
+  color: #404040;
+  font-weight: bold;
+}
+
+#sidebar-files-menu {
+  border: 2px solid var(--color-main);
+}
+
+.file-list-item {
+  color: #000;
+  border-bottom: var(--window-border);
+  overflow: hidden;
+}
+
+.file-list-item.active {
+  background-color: var(--color-8);
+  color: #000;
+}
+
+.file-list-item-file-name {
+  font-weight: 700;
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  line-height: 2;
+}
+
+.file-node-content {
+  padding-top: 6px;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  font-weight: normal;
+  overflow: hidden;
+}
+
+.file-node-content:active {
+  background-color: var(--color-8);
+}
+
+.active .file-node-content {
+  font-weight: bold;
+}
+
+.ty-on-drag-enter {
+  background-color: var(--color-main);
+}
+
+.file-node-content:hover {
+  cursor: pointer;
+  background: var(--color-3);
+  border-radius: 10px;
+}
+
+.file-node-icon,
+.file-node-open-state {
+  padding-left: 10px;
+  margin-right: 6px;
+  float: left;
+}
+
+#typora-sidebar .file-list-item.file-library-node:not(.active):hover {
+  background: var(--color-3);
+}
+
+#typora-sidebar .file-tree-node.file-library-file-node.active .file-node-background {
+  background: var(--color-main);
+  border-left: 5px solid #404040;
+}
+
+.sidebar-footer {
+  background: var(--color-5);
+}
+
+/* 搜索栏位置调整 */
+.ty-sidebar-search-panel {
+  border-bottom-color: var(--color-9);
+  padding-top: 16px;
+  padding-bottom: 10px;
+}
+
+/* 搜索选项定位 */
+.ty-sidebar-search-panel .searchpanel-search-option-btn{
+  top: 18px;
+}
+
+/* 搜索关闭按钮 */
+#close-outline-filter-btn {
+  position: relative;
+  left: 1px;
+  bottom: 1px;
+}
+
+.html-for-mac #file-library-search-input {
+  font-weight: normal;
+  color: #202020;
+}
+
+#typora-sidebar #ty-sidebar-footer .sidebar-footer-item:hover {
+  background: var(--color-7);
+}
+
+#typora-sidebar #outline-content .outline-item:hover {
+  background: var(--color-5);
+}
+
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu .show+.menuitem-group-label.show {
+  border-color: var(--color-main);
+}
+
+#typora-sidebar #ty-sidebar-footer {
+  border-top: var(--window-border);
+  color: #202020;
+}
+
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu li>a:hover {
+  background: var(--color-6);
+  border-radius: 5px
+}
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu {
+  background: var(--color-3);
+}
+
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu .ty-side-sort-btn.active {
+  background: var(--color-3);
+}
+
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu .ty-side-sort-btn.active,
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu .ty-side-sort-btn:hover {
+  color: #576690;
+}
+
+
+.CodeMirror-lines {
+    font-family: var(--monospace);
+    padding-left: 4px;
+}
+
+/* 代码高亮样式 */
+.cm-s-inner span.cm-meta { color: #FF1717; }
+.cm-s-inner span.cm-comment { color: #8f5536; }
+.cm-s-inner span.cm-atom { color: #aa759f; }
+.cm-s-inner span.cm-number { color: #aa759f; }
+
+.cm-s-inner span.cm-property, .cm-s-inner span.cm-attribute { color: #90a959; }
+.cm-s-inner span.cm-keyword { color: #ac4142; }
+.cm-s-inner span.cm-string { color: #d28445; }
+
+.cm-s-inner span.cm-variable { color: #90a959; }
+.cm-s-inner span.cm-variable-2 { color: #6a9fb5; }
+.cm-s-inner span.cm-def { color: #d28445; }
+.cm-s-inner span.cm-bracket { color: #202020; }
+.cm-s-inner span.cm-tag { color: #ac4142; }
+.cm-s-inner span.cm-link { color: #aa759f; }
+.cm-s-inner span.cm-error { background: #ac4142; color: #505050; }
+
+.cm-s-inner .CodeMirror-matchingbracket { color: #f5f5f5 !important; background-color: #6A9FB5 !important}
+
+.code-tooltip {
+    font-family: var(--monospace);
+    box-shadow: 0 2px 2px 0 var(--color-5);
+    font-weight: bold;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid var(--color-4);
+    background-image: var(--background-img);
+    background-size: 10%;
+    background-position: 90% bottom;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: var(--color-1-notrans);
+    border-radius: 3px;
+    /*padding-left: 5px;*/
+    padding:  2px 4px;
+    font-size: 0.9em;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+.mathjax-block {
+  box-shadow: 0 2px 2px 0 var(--color-5);
+}
+
+blockquote {
+  border-left: 0.3rem solid var(--color-main);
+  border-radius: 0.4rem;
+  padding: 10px 15px;
+  color: #777;
+  /*background-color: var(--color-5);
+  box-shadow: var(--color-7);*/
+  font-family: var(--quota-font);
+}
+
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid var(--color-5);
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: var(--color-1);
+}
+table th {
+    border: 1px solid var(--color-5);
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid var(--color-5);
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+  margin-top: 0;
+}
+
+table tr th:last-child,
+table tr td:last-child {
+  margin-bottom: 0;
+}
+
+
+/* 粗体 */
+#write strong {
+  padding: 0 2px;
+  color: var(--color-8);
+  font-weight: 600;
+  font-family: var(--em-font);
+}
+
+/* 斜体 */
+#write em {
+  padding: 0 5px 0 2px;
+  font-family: var(--em-font);
+  /* font-style: normal;
+  color: #4abdeb; */
+}
+
+
+.md-reset {
+  background-color: #fff;
+}
+
+.md-reset .md-grid-ext {
+  background-color: var(--color-7);
+}
+
+.md-reset .md-grid-ext a.md-active {
+  background-color: var(--color-3);
+}
+
+.md-reset a.md-active {
+  background-color: var(--color-3);
+}
+
+#write mark {
+  background-color: var(--color-10);
+  border-radius: 2px;
+  padding: 2px 4px;
+  margin: 0 2px;
+}
+
+#write del {
+  padding: 1px 2px;
+}
+
+/* 图片 */
+.md-image > .md-meta {
+  border-radius: 3px;
+  font-family: var(--monospace);
+  padding: 2px 0 0 4px;
+  font-size: 0.9em;
+  color: inherit;
+}
+
+/* 图片靠左显示 */
+p .md-image:only-child {
+  width: auto;
+  text-align: left;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.md-tag {
+  color: inherit;
+}
+
+/* 默认有阴影 */
+#write img {
+  max-width: 100% !important;
+  box-shadow: var(--shadow);
+  border-radius: 5px;
+  border: 0px;
+}
+
+element.style {
+  width: calc(100% - 18px);
+}
+
+/* 设置一体化菜单头 */
+.megamenu-menu-header {
+  border-bottom: 1px solid var(--color-1-notrans);
+}
+
+/* 设置一体化菜单颜色 */
+.megamenu-menu {
+  background-color: var(--color-8) ;
+}
+
+/* checkbox */
+input[type="checkbox"]:before {
+  content: "";
+  display: inline-block;
+  width: 1.1rem;
+  height: 1.1rem;
+  vertical-align: middle;
+  text-align: center;
+  border: 0px;
+  border-radius: 3px;
+  background-color: var(--color-5);
+  margin-top: -0.5rem;
+  margin-left: -0.1rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* checkbox hover */
+input[type="checkbox"]:not([disabled]):not(:checked):hover:before {
+  content: "\2713";
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+  color: var(--color-6);
+}
+
+/* checkbox checked*/
+input[type="checkbox"]:checked:before {
+  content: "\2713";
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+  color: #808080;
+  font-weight: bold;
+}
+
+/* checkbox checked hover*/
+input[type="checkbox"]:checked:hover:before {
+  content: "\2713";
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+  color: #808080;
+  font-weight: bold;
+}
+
+/* YAML block */
+pre.md-meta-block,
+pre.md-meta-block:active {
+  background-color: var(--color-2);
+  box-shadow: 0px 0px 10px var(--color-3);
+  border-radius: 6px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* radio */
+input[type="radio"]:before {
+  content: "";
+  display: inline-block;
+  width: 1.1rem;
+  height: 1.1rem;
+  vertical-align: middle;
+  text-align: center;
+  border: 0px;
+  border-radius: 0.55rem;
+  background-color: var(--color-5);
+  margin-top: -0.4rem;
+  margin-left: -0.1rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* radio hover */
+input[type="radio"]:not([disabled]):not(:checked):hover:before {
+  content: "\25CF";
+  font-size: 1rem;
+  line-height: 1rem;
+  color: var(--color-6);
+}
+
+/* radio checked */
+input[type="radio"]:checked:before {
+  content: "\25CF";
+  font-size: 1rem;
+  line-height: 1rem;
+  color: #808080;
+}
+
+/* radio checked hover*/
+input[type="radio"]:checked:before {
+  content: "\25CF";
+  font-size: 1rem;
+  line-height: 1rem;
+  color: #808080;
+}
+
+/* sidebar and outline */
+.pin-outline .outline-active {
+  color: var(--color-main);
+}
+
+
+
+</style><title>README</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='minecraft-mod-list'><span>Minecraft mod list</span></h1><p>&nbsp;</p><h2 id='fabric-mod'><span>fabric mod</span></h2><h4 id='fabric'><a href='https://fabricmc.net/use/installer/'><strong><span>fabric</span></strong><span> </span></a></h4><h4 id='fabric-api'><a href='https://www.curseforge.com/minecraft/mc-mods/fabric-api'><strong><span>fabric api</span></strong></a></h4><h4 id='fabric-language-kotlin的前置库'><a href='curseforge.com/minecraft/mc-mods/fabric-language-kotlin'><strong><span>Fabric Language Kotlin的前置库</span></strong></a></h4><h4 id='mod-memu菜单'><a href='https://www.curseforge.com/minecraft/mc-mods/modmenu'><strong><span>mod memu菜单</span></strong></a></h4><h4 id='replaymod录制'><a href='https://replaymod.com/'><strong><span>replaymod录制</span></strong></a></h4><h4 id='界面账号切换'><a href='https://www.curseforge.com/minecraft/mc-mods/in-game-account-switcher'><strong><span>界面账号切换</span></strong></a></h4><h4 id='bad-packets'><a href='https://www.curseforge.com/minecraft/mc-mods/badpackets'><strong><span>bad packets</span></strong></a></h4><h4 id='禁用聊天举报-no-chat-reports'><a href='https://www.curseforge.com/minecraft/mc-mods/no-chat-reports'><strong><span>禁用聊天举报 No Chat Reports</span></strong></a></h4><p>&nbsp;</p><h2 id='跨版本插件'><span>跨版本插件</span></h2><h4 id='viaversion'><a href='https://viaversion.com/fabric'><strong><span>viaversion</span></strong></a></h4><h4 id='multiconnect'><a href='https://www.curseforge.com/minecraft/mc-mods/multiconnect'><strong><span>multiconnect</span></strong></a></h4><p>&nbsp;</p><h2 id='ソノヒ'><span>ソノヒ</span></h2><h4 id='amecs案件帮顶'><a href='https://www.curseforge.com/minecraft/mc-mods/amecs'><strong><span>Amecs案件帮顶</span></strong></a></h4><h4 id='资源包拖动'><a href='https://www.curseforge.com/minecraft/mc-mods/draggable-resource-packs'><strong><span>资源包拖动</span></strong></a></h4><h4 id='mambience音效'><a href='https://www.curseforge.com/minecraft/mc-mods/mambience'><strong><span>MAmbience音效</span></strong></a></h4><h4 id='cherished-worlds收藏'><a href='https://www.curseforge.com/minecraft/mc-mods/cherished-worlds-fabric/files/all?filter-game-version=1738749986%3a73250'><strong><span>Cherished Worlds收藏</span></strong></a></h4><h4 id='tapping延迟'><a href='https://www.curseforge.com/minecraft/mc-mods/better-ping-display-fabric'><strong><span>tapping延迟</span></strong></a></h4><h4 id='kappa披风'><a href='https://www.curseforge.com/minecraft/mc-mods/kappa'><strong><span>kappa披风</span></strong></a></h4><h4 id='纸娃娃'><a href='https://www.curseforge.com/minecraft/mc-mods/extraplayerrenderer'><strong><span>纸娃娃</span></strong></a></h4><h4 id='chat-heads'><a href='https://www.curseforge.com/minecraft/mc-mods/chat-heads'><strong><span>chat-heads</span></strong></a></h4><p><a href='https://www.curseforge.com/minecraft/mc-mods/better-end-sky-fabric'><span>end sky</span></a></p><p><a href='https://www.curseforge.com/minecraft/mc-mods/falling-leaves-fabric/files/3782712'><span>Falling Leaves树叶</span></a></p><p><a href='https://www.curseforge.com/minecraft/mc-mods/not-enough-animations'><span>not enough antimationsちじあん</span></a></p><p><a href='https://kosmx.gitbook.io/emotecraft/'><span>emotecraftもえじい</span></a></p><p><a href='https://www.curseforge.com/minecraft/mc-mods/betterf3'><span>Better F3</span></a></p><p>&nbsp;</p><h2 id='优化'><span>优化</span></h2><h4 id='禁止启动100占用'><a href='https://www.curseforge.com/minecraft/mc-mods/smooth-boot'><strong><span>禁止启动100%占用</span></strong></a></h4><p><a href='https://www.curseforge.com/minecraft/mc-mods/better-beds'><strong><span>betterbeds</span></strong></a></p><p><a href='https://www.curseforge.com/minecraft/mc-mods/fastchest'><strong><span>fast-chest</span></strong><span> </span></a></p><p>&nbsp;</p><h2 id='辅助'><span>辅助</span></h2><h3 id='masa'><strong><span>masa</span></strong></h3><ul><li><h5 id='前置库malilib'><a href='https://www.curseforge.com/minecraft/mc-mods/malilib'><strong><span>前置库malilib</span></strong></a></h5></li><li><h5 id='item-scroller-物品滚轮'><a href='https://www.curseforge.com/minecraft/mc-mods/item-scroller'><strong><span>Item Scroller 物品滚轮</span></strong></a></h5></li><li><h5 id='minihad'><a href='https://www.curseforge.com/minecraft/mc-mods/minihud'><strong><span>minihad</span></strong></a></h5></li><li><h5 id='tweakeroo'><a href='https://www.curseforge.com/minecraft/mc-mods/tweakeroo'><strong><span>tweakeroo</span></strong></a></h5></li></ul><h3 id='hendrixshen'><strong><span>hendrix_shen</span></strong></h3><ul><li><h4 id='magiclib前置库'><a href='https://www.curseforge.com/minecraft/mc-mods/magiclib'><strong><span>MagicLib前置库</span></strong></a></h4></li><li><h4 id='tweak-myclien'><a href='https://www.curseforge.com/minecraft/mc-mods/tweakmyclient'><strong><span>Tweak-My_Clien</span></strong></a></h4></li><li><h4 id='carpet-tctc-addition'><a href='https://www.curseforge.com/minecraft/mc-mods/carpet-tctc-addition'><strong><span>Carpet TCTC Addition</span></strong></a></h4></li></ul><h3 id='plusls'><strong><span>plusls</span></strong></h3><ul><li><h4 id='masa-gadget'><a href='https://www.curseforge.com/minecraft/mc-mods/masa-gadget'><strong><span>masa-gadget</span></strong></a></h4></li><li><h4 id='oh-my-minecraft-client-chat'><a href='https://www.curseforge.com/minecraft/mc-mods/oh-my-minecraft-client'><strong><span>Oh My Minecraft Client chat</span></strong></a></h4></li><li><h4 id='xml-add'><a href='https://www.curseforge.com/minecraft/mc-mods/xaero-map-addition'><strong><span>xml add</span></strong></a></h4></li><li><h4 id='plusls-carpet-addition'><a href='https://github.com/plusls/plusls-carpet-addition'><strong><span>plusls-carpet-addition </span></strong></a></h4></li><li><h4 id='输入冲突'><a href='https://www.curseforge.com/minecraft/mc-mods/imblockerfabric'><strong><span>输入冲突</span></strong></a></h4></li></ul><h3 id='fallenbreath'><strong><span>fallen_breath</span></strong></h3><ul><li><h4 id='tweakermore'><a href='https://www.curseforge.com/minecraft/mc-mods/tweakermore'><strong><span>tweaker</span></strong></a><a href='https://github.com/Fallen-Breath/tweakermore'><strong><span>more</span></strong></a></h4></li><li><h4 id='carpet-tis-addition'><a href='https://www.curseforge.com/minecraft/mc-mods/carpet-tis-addition'><strong><span>Carpet-TIS-Addition</span></strong></a></h4></li></ul><p>&nbsp;</p><h2 id='その'><strong><span>その</span></strong></h2><ul><li><p><a href='https://www.curseforge.com/minecraft/mc-mods/easiercrafting'><strong><span>easiercrafting 合成分类</span></strong></a></p></li><li><p><a href='https://github.com/Earthcomputer/clientcommands'><strong><span>client commands</span></strong><span> </span></a></p></li><li><p><a href='https://www.curseforge.com/minecraft/mc-mods/shulkerboxtooltip'><strong><span>潜影盒显示</span></strong><span> </span></a></p></li><li><p><a href='https://www.curseforge.com/minecraft/mc-mods/autofish'><strong><span>autofish</span></strong></a></p></li><li><p><a href='https://www.curseforge.com/minecraft/mc-mods/held-item-info'><strong><span>Held Item Info信息tips</span></strong></a></p></li><li><p><a href='https://www.curseforge.com/minecraft/mc-mods/easiervillagertrading'><strong><span>easiervillagertrading交易</span></strong></a></p></li><li><p><a href='https://www.curseforge.com/minecraft/mc-mods/inventory-profiles-next'><strong><span>inventory-profiles-next 整理</span></strong></a><span> </span><a href='https://www.curseforge.com/minecraft/mc-mods/cloth-config'><strong><span>前置api</span></strong></a></p></li><li><p><a href='https://www.curseforge.com/minecraft/mc-mods/antighost'><strong><span>g键消除幽灵方块</span></strong></a></p></li><li><p><a href='https://www.curseforge.com/minecraft/mc-mods/hwyla'><strong><span>方块指示信息1.16.2&lt;= </span></strong></a><span> </span><a href='https://www.curseforge.com/minecraft/mc-mods/wthit'><strong><span>1.16.2&gt;</span></strong></a></p></li><li><p><a href='https://www.curseforge.com/minecraft/mc-mods/xaeros-minimap'><strong><span>minimap</span></strong></a><a href='https://www.curseforge.com/minecraft/mc-mods/xaeros-world-map'><strong><span>word map</span></strong></a></p></li><li><p><a href='https://www.curseforge.com/minecraft/mc-mods/blockmeterfabric'><strong><span>blockmeter数格子</span></strong></a></p></li><li><p><a href='https://minecraft.curseforge.com/projects/appleskin'><strong><span>appleskin</span></strong></a></p></li><li><p><a href='https://www.curseforge.com/minecraft/mc-mods/inventory-hud-forge'><strong><span>Inventory HUD+</span></strong></a></p></li><li><p><a href='https://www.curseforge.com/minecraft/mc-mods/inventory-hud-forge'><span>inventory-hud-forge</span></a></p></li><li><p><a href='https://www.curseforge.com/minecraft/mc-mods/visp'><span>vips高亮获得物品</span></a></p></li><li><p><a href='https://www.curseforge.com/minecraft/mc-mods/advancementinfo'><span>进度描述</span></a></p></li><li><p><a href='https://www.curseforge.com/minecraft/mc-mods/coloured-tooltips'><span>Coloured Tooltips</span></a></p></li><li><p><a href='https://github.com/xfl03/MCCustomSkinLoader'><span>skin</span></a></p><p>&nbsp;</p><p>&nbsp;</p><h2 id='iris-1'><a href='https://irisshaders.net/'><strong><span>Iris</span></strong></a></h2><h5 id='iris-2'><a href='https://www.curseforge.com/minecraft/mc-mods/irisshaders'><strong><span>ir</span></strong></a><a href='https://modrinth.com/mod/iris'><strong><span>is</span></strong></a></h5><h4 id='sodium'><a href='https://www.curseforge.com/minecraft/mc-mods/Sodium'><strong><span>sodium</span></strong></a></h4><h4 id='sodium-extra'><a href='https://www.curseforge.com/minecraft/mc-mods/Sodium-extra'><strong><span>sodium extra</span></strong></a></h4><h4 id='better-sodium-video-settings-button'><a href='https://www.curseforge.com/minecraft/mc-mods/better-sodium-video-settings-button'><strong><span>better sodium video settings button</span></strong></a></h4><h4 id='continuity材质'><a href='https://www.curseforge.com/minecraft/mc-mods/continuity/'><strong><span>continuity材质</span></strong></a></h4><h4 id='lamb-dynamic-lights动态光源'><a href='https://www.curseforge.com/minecraft/mc-mods/lambdynamiclights'><strong><span>lamb dynamic lights动态光源</span></strong></a></h4><h4 id='indium-钠的补充mod'><a href='https://www.curseforge.com/minecraft/mc-mods/indium'><strong><span>Indium</span></strong><span> </span><strong><span>钠的补充mod</span></strong></a></h4><h4 id='okzoomer'><a href='https://www.curseforge.com/minecraft/mc-mods/ok-zoomer'><strong><span>okzoomer</span></strong></a></h4><h4 id='loading-color'><a href='https://www.curseforge.com/minecraft/mc-mods/dark-loading-screen'><strong><span>loading color</span></strong></a></h4><h5 id='fabricskyboxes'><a href='https://www.curseforge.com/minecraft/mc-mods/fabricskyboxes'><strong><span>FabricSkyboxes</span></strong></a></h5><h4 id='load-my-resources'><a href='https://www.curseforge.com/minecraft/mc-mods/load-my-resources-fabric'><strong><span>load my resources</span></strong></a></h4><p>&nbsp;</p><p>&nbsp;</p><h2 id='optifabric'><a href='https://curseforge.com/minecraft/mc-mods/optifabric'><strong><span>optifabric</span></strong></a></h2><h4 id='optifine'><a href='https://optifine.net/downloads'><strong><span>optifine</span></strong></a></h4></li></ul></div></div>
+</body>
+</html>

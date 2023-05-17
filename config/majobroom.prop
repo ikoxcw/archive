@@ -1,0 +1,6 @@
+#
+#Sun Jul 31 15:47:55 CST 2022
+requireXpLevel=yes
+autoThirdPersonView=yes
+classicalMovement=yes
+maxMoveSpeed=30.0

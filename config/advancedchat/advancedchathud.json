@@ -1,0 +1,58 @@
+{
+  "general": {
+    "vanillHud": false,
+    "minimalist": false,
+    "chatHeads": false,
+    "tabButtonsOnRight": false,
+    "width": 280,
+    "height": 117,
+    "x": 0,
+    "y": 30,
+    "messageSpace": 0,
+    "lineSpace": 9,
+    "leftPad": 2,
+    "rightPad": 2,
+    "bottomPad": 1,
+    "topPad": 0,
+    "visibility": "vanilla",
+    "advancedchathud.config.general.chatScale": 1.0,
+    "fadeTime": 40,
+    "fadeStart": 100,
+    "fadeType": "linear",
+    "emptyTextColor": "#FFFFFFFF",
+    "hudLineType": "full",
+    "alternateLines": false,
+    "storedLines": 200,
+    "renderInOther": true
+  },
+  "maintab": {
+    "name": "Main",
+    "startingMessage": "",
+    "forward": true,
+    "abbreviation": "Main",
+    "mainColor": "#643F3F3F",
+    "borderColor": "#B4000000",
+    "innerColor": "#64000000",
+    "showUnread": false,
+    "match": [
+      {
+        "pattern": "I will match to text!",
+        "findtype": "literal"
+      }
+    ],
+    "uuid": "b7deb96d-5c8e-423a-8b54-8c82bb16bacb"
+  },
+  "tabs": [],
+  "windows": [
+    {
+      "x": 0.0,
+      "y": 0.9150141643059491,
+      "width": 0.4117647058823529,
+      "height": 0.3314447592067989,
+      "visibility": "vanilla",
+      "tabuuid": "b7deb96d-5c8e-423a-8b54-8c82bb16bacb",
+      "selected": true
+    }
+  ],
+  "config_version": 1
+}

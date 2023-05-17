@@ -1,0 +1,16 @@
+
+
+
+
+profile arch activate HOT4
+	HOT1
+		"minecraft:dark_oak_slab"
+	HOT2
+		"minecraft:brown_carpet"
+	HOT3
+		"minecraft:campfire"
+	HOT4
+		"minecraft:golden_shovel"
+	HEAD
+		"minecraft:diamond_helmet" -> "Enchantments" : [{id:"minecraft:projectile_protection",lvl:3},{id:"minecraft:unbreaking",lvl:2}]
+

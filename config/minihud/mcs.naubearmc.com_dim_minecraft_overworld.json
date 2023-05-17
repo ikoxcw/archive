@@ -1,0 +1,69 @@
+{
+  "data_storage": {
+    "distance_pos": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "shapes": {
+    "shapes": [
+      {
+        "type": "can_despawn_sphere",
+        "color": 1621114960,
+        "enabled": false,
+        "display_name": "（弱加载）球面 ( \u003e 32)",
+        "render_type": "outer_edge",
+        "layers": {
+          "mode": "ALL",
+          "axis": "Y",
+          "layer_single": 0,
+          "layer_above": 0,
+          "layer_below": 0,
+          "layer_range_min": 0,
+          "layer_range_max": 0,
+          "hotkey_range_min": false,
+          "hotkey_range_max": false
+        },
+        "snap": "center",
+        "combine_quads": false,
+        "center": [
+          359.984103544585,
+          -29.94925986562482,
+          471.8294865269783
+        ],
+        "main_axis": "UP",
+        "radius": 32.0,
+        "margin": 0.0
+      },
+      {
+        "type": "can_spawn_sphere",
+        "color": 1621114960,
+        "enabled": false,
+        "display_name": "（强加载）球面 ( \u003e 24)",
+        "render_type": "outer_edge",
+        "layers": {
+          "mode": "ALL",
+          "axis": "Y",
+          "layer_single": 0,
+          "layer_above": 0,
+          "layer_below": 0,
+          "layer_range_min": 0,
+          "layer_range_max": 0,
+          "hotkey_range_min": false,
+          "hotkey_range_max": false
+        },
+        "snap": "center",
+        "combine_quads": false,
+        "center": [
+          359.984103544585,
+          -29.94925986562482,
+          471.8294865269783
+        ],
+        "main_axis": "UP",
+        "radius": 24.0,
+        "margin": 0.0
+      }
+    ]
+  }
+}
