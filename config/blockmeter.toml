@@ -1,9 +1,0 @@
-minimalLabelSize = true
-deleteBoxesOnDisable = true
-sendBoxes = false
-showBoxesWhenDisabled = true
-backgroundForLabels = true
-incrementColor = false
-innerDiagonal = true
-showOtherUsersBoxes = true
-colorIndex = 15
